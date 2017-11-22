@@ -3,22 +3,33 @@
 <head>
     <meta charset=utf-8/>
     <title>Add Image</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!--<script type="text/javascript" src="{{ url_for('static', filename='js/image_load.js') }}"></script>-->
     <script>
-      var openFile = function(event) {
-        var input = event.target;
+        function openFile(event) {
+            var input = event.target;
 
-        var reader = new FileReader();
-        reader.onload = function(){
-          var dataURL = reader.result;
-          var image_loader = document.getElementById('image_loader');
-          image_loader.src = dataURL;
-        };
-        reader.readAsDataURL(input.files[0]);
-      };
+            var reader = new FileReader();
+            reader.onload = function(){
+              var dataURL = reader.result;
+              var output = document.getElementById('output');
+              output.src = dataURL;
+              output.width = 150;
+              output.height = 200;
+            };
+            reader.readAsDataURL(input.files[0]);
+         };
+
+         $(document).ready(
+             function(){
+                $("#image_loader").on("change", openFile);
+             }
+         );
+
     </script>
 </head>
 <body>
-<input type='file' accept='image/*' onchange='openFile(event)'><br>
-<img id='image_loader' style='height: 100%; width: 100%; object-fit: fill'>
+<input id='image_loader' type='file' accept='image/*'><br>
+<img id='output' style='height: 100%; width: 100%; object-fit: fill'>
 </body>
 </html>
