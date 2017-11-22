@@ -40,6 +40,11 @@ def mnist():
     return jsonify(results=[output1, output2])
 
 
+@app.route('/train')
+def info():
+    return render_template('image_load.html')
+
+
 @app.route('/')
 def main():
     return render_template('index.html')
