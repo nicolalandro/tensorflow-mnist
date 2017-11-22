@@ -10,8 +10,8 @@
         var reader = new FileReader();
         reader.onload = function(){
           var dataURL = reader.result;
-          var output = document.getElementById('output');
-          output.src = dataURL;
+          var image_loader = document.getElementById('image_loader');
+          image_loader.src = dataURL;
         };
         reader.readAsDataURL(input.files[0]);
       };
@@ -19,6 +19,6 @@
 </head>
 <body>
 <input type='file' accept='image/*' onchange='openFile(event)'><br>
-<img id='output' style='height: 100%; width: 100%; object-fit: fill'>
+<img id='image_loader' style='height: 100%; width: 100%; object-fit: fill'>
 </body>
 </html>
