@@ -4,7 +4,6 @@ from flask import Flask, jsonify, render_template, request
 
 from mnist import model
 
-
 x = tf.placeholder("float", [None, 784])
 sess = tf.Session()
 
@@ -13,7 +12,6 @@ with tf.variable_scope("regression"):
     y1, variables = model.regression(x)
 saver = tf.train.Saver(variables)
 saver.restore(sess, "mnist/data/regression.ckpt")
-
 
 with tf.variable_scope("convolutional"):
     keep_prob = tf.placeholder("float")
@@ -45,6 +43,11 @@ def mnist():
 @app.route('/')
 def main():
     return render_template('index.html')
+
+
+@app.route('/info')
+def main():
+    return render_template('info.html')
 
 
 if __name__ == '__main__':
