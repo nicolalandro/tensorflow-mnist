@@ -4,15 +4,8 @@
     <meta charset="UTF-8">
     <title>My Regression</title>
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script>
-    $(document).ready(
-             function(){
-                $('#input').on('change', function() {
-                    $("#output").text($(this).val());
-                });
-             }
-     );
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/my_regression.js') }}"></script>
+
 </head>
 <body>
     Input
