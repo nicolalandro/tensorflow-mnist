@@ -4,29 +4,7 @@
     <meta charset=utf-8/>
     <title>Add Image</title>
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <!--<script type="text/javascript" src="{{ url_for('static', filename='js/image_load.js') }}"></script>-->
-    <script>
-        function openFile(event) {
-            var input = event.target;
-
-            var reader = new FileReader();
-            reader.onload = function(){
-              var dataURL = reader.result;
-              var output = document.getElementById('output');
-              output.src = dataURL;
-              output.width = 150;
-              output.height = 200;
-            };
-            reader.readAsDataURL(input.files[0]);
-         };
-
-         $(document).ready(
-             function(){
-                $("#image_loader").on("change", openFile);
-             }
-         );
-
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/image_load.js') }}"></script>
 </head>
 <body>
 <input id='image_loader' type='file' accept='image/*'><br>

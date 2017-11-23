@@ -10,11 +10,10 @@ function openFile(event) {
               output.height = 200;
             };
             reader.readAsDataURL(input.files[0]);
-};
+         };
 
-function init(){
-    alert("pippo");
-    $("#image_loader").on("change", openFile);
-}
-
-window.onload="init()";
+         $(document).ready(
+             function(){
+                $("#image_loader").on("change", openFile);
+             }
+         );
