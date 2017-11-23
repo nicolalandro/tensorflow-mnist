@@ -26,6 +26,5 @@
     $ heroku buildpacks:add heroku/python
     $ git push heroku master
 
-or Heroku Button.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+### Study ###
+* [Use dropbox with python](https://www.dropbox.com/developers-v1/core/start/python)
