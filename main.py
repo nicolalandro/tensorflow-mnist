@@ -59,7 +59,7 @@ def my_reg():
     return jsonify(results=[str(output)])
 
 
-@app.route('/train')
+@app.route('/image_load')
 def train():
     return render_template('image_load.html')
 
