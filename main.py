@@ -2,9 +2,11 @@ import numpy as np
 import tensorflow as tf
 from flask import Flask, jsonify, render_template, request
 
+from LinearRegression import my_model
 from mnist import model
 
 x = tf.placeholder("float", [None, 784])
+x1 = tf.placeholder(tf.float32)
 sess = tf.Session()
 
 # restore trained data
@@ -19,6 +21,11 @@ with tf.variable_scope("convolutional"):
 saver = tf.train.Saver(variables)
 saver.restore(sess, "mnist/data/convolutional.ckpt")
 
+with tf.variable_scope("my_model"):
+    y3, variables = my_model.regr(x1)
+saver = tf.train.Saver(variables)
+saver.restore(sess, "LinearRegression/data/linear_regression.ckpt")
+
 
 def regression(input):
     return sess.run(y1, feed_dict={x: input}).flatten().tolist()
@@ -26,6 +33,10 @@ def regression(input):
 
 def convolutional(input):
     return sess.run(y2, feed_dict={x: input, keep_prob: 1.0}).flatten().tolist()
+
+
+def my_regression(input):
+    return sess.run(y3, feed_dict={x1: input})
 
 
 # webapp
@@ -38,6 +49,14 @@ def mnist():
     output1 = regression(input)
     output2 = convolutional(input)
     return jsonify(results=[output1, output2])
+
+
+@app.route('/api/my_regression', methods=['POST'])
+def my_reg():
+    app.logger.info(request.json)
+    input = float(request.json["x"])
+    output = my_regression(input)
+    return jsonify(results=[str(output)])
 
 
 @app.route('/train')
