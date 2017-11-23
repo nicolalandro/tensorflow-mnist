@@ -41,8 +41,13 @@ def mnist():
 
 
 @app.route('/train')
-def info():
+def train():
     return render_template('image_load.html')
+
+
+@app.route('/mnist')
+def mnist_page():
+    return render_template('mnist.html')
 
 
 @app.route('/')
