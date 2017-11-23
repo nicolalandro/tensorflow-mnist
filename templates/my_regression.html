@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Regression</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script>
+    $(document).ready(
+             function(){
+                $('#input').on('change', function() {
+                    $("#output").text($(this).val());
+                });
+             }
+     );
+    </script>
+</head>
+<body>
+    Input
+    <input id="input" type=number step=0.1 name="x"/>
+    <label id="output">risultato</label>
+</body>
+</html>

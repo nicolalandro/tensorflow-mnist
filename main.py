@@ -69,6 +69,11 @@ def mnist_page():
     return render_template('mnist.html')
 
 
+@app.route('/my_regression')
+def my_regression_page():
+    return render_template('my_regression.html')
+
+
 @app.route('/')
 def main():
     return render_template('index.html')
