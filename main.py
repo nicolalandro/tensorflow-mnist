@@ -56,7 +56,7 @@ def my_reg():
     app.logger.info(request.json)
     input = float(request.json["x"])
     output = my_regression(input)
-    return jsonify(results=[str(output)])
+    return jsonify(results=[float(output)])
 
 
 @app.route('/image_load')
