@@ -12,6 +12,9 @@
 - Node >=6.9
 
 
+### How to compile js ###
+    $ gulp build
+
 ### How to run ###
 
     $ pip install -r requirements.txt
