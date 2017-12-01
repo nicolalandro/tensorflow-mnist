@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 .idea/
 *.pyc
+=======
+venv
+*.pyc
+node_modules
+static/js/main.js
+>>>>>>> 35bf121b7e6994c2ce5310258bc7b6560220a199
