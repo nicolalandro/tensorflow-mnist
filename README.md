@@ -12,12 +12,8 @@
 - Node >=6.9
 
 
-<<<<<<< HEAD
 ### How to compile js ###
     $ gulp build
-
-=======
-
 
 ### How to run ###
 
@@ -33,8 +29,5 @@
     $ heroku buildpacks:add heroku/python
     $ git push heroku master
 
-<<<<<<< HEAD
 ### Study ###
 * [Use dropbox with python](https://www.dropbox.com/developers-v1/core/start/python)
-=======
-
