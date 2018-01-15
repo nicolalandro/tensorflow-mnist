@@ -26,7 +26,7 @@ def svm_to_array(classify):
     return category
 
 
-clf = svm.SVC()
+clf = svm.LinearSVC()
 
 for _ in range(1000):
     train_data, train_target = data.train.next_batch(100)

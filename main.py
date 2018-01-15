@@ -29,6 +29,8 @@ saver.restore(sess, "LinearRegression/data/linear_regression.ckpt")
 
 decision_tree = joblib.load('DecisionTree/data/parsing_tree.pkl')
 knn = joblib.load('KNN/data/knn.pkl')
+svm = joblib.load('SVM/data/svm.pkl')
+
 
 def regression(input):
     return sess.run(y1, feed_dict={x: input}).flatten().tolist()
@@ -46,6 +48,13 @@ def my_regression(input):
 app = Flask(__name__)
 
 
+def svm_to_array(classify):
+    print("_________", classify)
+    category = [0] * 10
+    category[np.math.ceil(classify[0])] = 1
+    return category
+
+
 @app.route('/api/mnist', methods=['POST'])
 def mnist():
     input = ((255 - np.array(request.json, dtype=np.uint8)) / 255.0).reshape(1, 784)
@@ -53,7 +62,8 @@ def mnist():
     output2 = convolutional(input)
     output3 = decision_tree.predict(input).flatten().tolist()
     output4 = knn.predict(input).flatten().tolist()
-    return jsonify(results=[output1, output2, output3, output4])
+    output5 = svm_to_array(svm.predict(input))
+    return jsonify(results=[output1, output2, output3, output4, output5])
 
 
 @app.route('/api/my_regression', methods=['POST'])
