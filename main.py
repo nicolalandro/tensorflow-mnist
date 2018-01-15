@@ -30,6 +30,7 @@ saver.restore(sess, "LinearRegression/data/linear_regression.ckpt")
 decision_tree = joblib.load('DecisionTree/data/parsing_tree.pkl')
 knn = joblib.load('KNN/data/knn.pkl')
 svm = joblib.load('SVM/data/svm.pkl')
+gaussian = joblib.load('Gaussian/data/gaussian.pkl')
 
 
 def regression(input):
@@ -49,7 +50,7 @@ app = Flask(__name__)
 
 
 def svm_to_array(classify):
-    print("_________", classify)
+    # print("_________", classify)
     category = [0] * 10
     category[np.math.ceil(classify[0])] = 1
     return category
@@ -63,7 +64,8 @@ def mnist():
     output3 = decision_tree.predict(input).flatten().tolist()
     output4 = knn.predict(input).flatten().tolist()
     output5 = svm_to_array(svm.predict(input))
-    return jsonify(results=[output1, output2, output3, output4, output5])
+    output6 = svm_to_array(gaussian.predict(input))
+    return jsonify(results=[output1, output2, output3, output4, output5, output6])
 
 
 @app.route('/api/my_regression', methods=['POST'])

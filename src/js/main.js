@@ -72,7 +72,7 @@ var _createClass = function() {
                         contentType: "application/json",
                         data: JSON.stringify(i),
                         success: function(t) {
-                            for (var e = 0; e < 5; e++) {
+                            for (var e = 0; e < 6; e++) {
                                 for (var i = 0, n = 0, s = 0; s < 10; s++) {
                                     var a = Math.round(1e3 * t.results[e][s]);
                                     a > i && (i = a, n = s);
